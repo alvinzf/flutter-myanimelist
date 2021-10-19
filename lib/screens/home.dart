@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('MyAnimeList')),
+      appBar: AppBar(title: const Text('MyAnimeList')),
       body: Center(
         child: FutureBuilder(
           builder: (context, AsyncSnapshot<List<Show>> snapshot) {
@@ -34,13 +34,14 @@ class _HomePageState extends State<HomePage> {
                     return Card(
                       color: Colors.white,
                       child: ListTile(
-                        contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10.0),
                         leading: CircleAvatar(
+                          radius: 30,
                           backgroundImage:
-                              NetworkImage('${snapshot.data![index].imageUrl}'),
+                              NetworkImage(snapshot.data![index].imageUrl),
                         ),
-                        title: Text('${snapshot.data![index].title}'),
+                        title: Text(snapshot.data![index].title),
                         subtitle: Text('Score: ${snapshot.data![index].score}'),
                         onTap: () {
                           Navigator.push(
@@ -58,9 +59,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               );
             } else if (snapshot.hasError) {
-              return Center(child: Text('Something went wrong :('));
+              return const Center(child: Text('Something went wrong :('));
             }
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           },
           future: shows,
         ),

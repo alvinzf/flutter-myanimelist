@@ -3,19 +3,20 @@ import 'package:mod3_kelxx/screens/home.dart';
 import 'package:mod3_kelxx/screens/detail.dart';
 
 void main() async {
-  runApp(AnimeApp());
+  runApp(const AnimeApp());
 }
 
 class AnimeApp extends StatelessWidget {
+  const AnimeApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Anime app',
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => HomePage(),
-        '/detail': (context) => DetailPage(item: 0, title: ''),
+        '/': (context) => const HomePage(),
+        '/detail': (context) => const DetailPage(item: 0, title: ''),
       },
     );
   }

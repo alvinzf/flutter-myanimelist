@@ -5,7 +5,7 @@ import 'dart:convert';
 class DetailPage extends StatefulWidget {
   final int item;
   final String title;
-  DetailPage({Key? key, required this.item, required this.title})
+  const DetailPage({Key? key, required this.item, required this.title})
       : super(key: key);
 
   @override
@@ -30,7 +30,6 @@ class _DetailPageState extends State<DetailPage> {
         builder: (context, AsyncSnapshot<List<Episode>> snapshot) {
           if (snapshot.hasData) {
             return Center(
-              
               child: ListView.separated(
                 padding: const EdgeInsets.all(8),
                 itemCount: snapshot.data!.length,
@@ -46,9 +45,9 @@ class _DetailPageState extends State<DetailPage> {
               ),
             );
           } else if (snapshot.hasError) {
-            return Center(child: Text('Something went wrong :('));
+            return const Center(child: Text('Something went wrong :('));
           }
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         },
         future: episodes,
       )),
@@ -69,7 +68,7 @@ class Episode {
 
 Future<List<Episode>> fetchEpisodes(id) async {
   final response = await http
-      .get(Uri.parse('https://api.jikan.moe/v3/anime/${id}/episodes/1'));
+      .get(Uri.parse('https://api.jikan.moe/v3/anime/$id/episodes/1'));
 
   if (response.statusCode == 200) {
     var episodesJson = jsonDecode(response.body)['episodes'] as List;
