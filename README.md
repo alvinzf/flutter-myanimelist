@@ -1,3 +1,3 @@
 ## Flutter MyAnimeList
 
-![Alt Text](https://github.com/alvinzf/flutter-myanimelist/blob/main/myanimelist.gif)
+<img src="https://github.com/alvinzf/flutter-myanimelist/blob/main/myanimelist.gif" width="200">
